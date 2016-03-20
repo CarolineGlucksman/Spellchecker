@@ -86,6 +86,11 @@ void HashTable::SpellCheck(string word){
 			if(findWord(temp)){
 				suggestions.push_back(temp);
 			}
+			//check for incorrect case
+			temp[i] = toupper(alphabet[j]);
+			if (findWord(temp)){
+				suggestions.push_back(temp);
+			}
 			temp = word;
 		}
 	}
