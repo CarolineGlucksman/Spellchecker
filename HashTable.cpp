@@ -66,7 +66,7 @@ void HashTable::SpellCheck(string word){
 	//because the word is not in the dictionary, we must provide suggestions
 	vector<string> suggestions;
 	string temp = word;
-	string alphabet = "abcdefghijklmnopqrstuvwxyz";
+	string alphabet = "abcdefghijklmnopqrstuvwxyz-";
 	//check to see if words with a Levenshtein distance of one are in the dictionary. these are the suggestions.
 	for (int i = 0, n = word.size(); i < n + 1; i++){
 		//first check for a deletion 
@@ -76,7 +76,7 @@ void HashTable::SpellCheck(string word){
 		}
 		temp = word;
 		//now check for a missing letter or for a wrong letter
-		for (int j = 0; j < 26; j++){
+		for (int j = 0, m = alphabet.size(); j < m; j++){
 			temp.insert(i, 1, alphabet[j]);
 			if(findWord(temp)){
 				suggestions.push_back(temp);
